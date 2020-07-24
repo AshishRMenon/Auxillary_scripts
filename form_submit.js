@@ -48,11 +48,9 @@ function sendFormByEmail(e)
   //Logger.log(entries);
   //Logger.log(values);
   
-  to = "hpc@iiit.ac.in";
-  cc = data["Email Address"] + ',' + "cvit-sudo@googlegroups.com" + ',' + adv_address;
+  //to = cluster_admin@org.ac.in;
+  //cc = data["Email Address"] + ',' + "group_admin@gmail.com" + ',' + adv_address;
   
-  //to = "ashishmenon95@gmail.com";
-  //cc = data["Email Address"] + ',' + adv_address + ',' + "ashish.r.menon@gmail.com";
   
   var csvSegment = "<pre>" + message + "</pre>";
   
