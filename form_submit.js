@@ -5,6 +5,8 @@ function sendFormByEmail(e)
   for(var i in items){
     if (items[i].getItem().getTitle()=="Advisor Email Address"){
       var adv_address = items[i].getResponse();
+      var adv_user_name = items[i].getResponse().toString().split("@")[0];
+      
     }
     }
   
@@ -15,9 +17,11 @@ function sendFormByEmail(e)
     "Name",
     "Email Address",
     "Advisor Name",
+    "advisor mail id",
     "Compute Level",
   ]
   data["Compute Level"] = "L1";
+  data["advisor mail id"] = adv_user_name
   for(var i in items){
     //Logger.log(i);
     var key = items[i].getItem().getTitle();
@@ -25,7 +29,7 @@ function sendFormByEmail(e)
     if (items[i].getItem().getTitle()=="Advisor Email Address"){ continue; }
     data[key] = value;
   }
-  
+ 
   var message = "";
   var subject = "[ada][cvit-account] ";
   
@@ -35,7 +39,7 @@ function sendFormByEmail(e)
   
   var entries = [];
   for(var i in headers){
-    Logger.log(e.namedValues[headers[i]].toString())
+    //Logger.log(e.namedValues[headers[i]].toString())
     var wrapped = /* '"' + */ e.namedValues[headers[i]].toString() /* +  '"' */;
     entries.push(wrapped);    
   }
@@ -48,9 +52,8 @@ function sendFormByEmail(e)
   //Logger.log(entries);
   //Logger.log(values);
   
-  //to = cluster_admin@org.ac.in;
-  //cc = data["Email Address"] + ',' + "group_admin@gmail.com" + ',' + adv_address;
-  
+  to = cluster_admin@org.ac.in;
+  cc = data["Email Address"] + ',' + "group_admin@gmail.com" + ',' + adv_address;
   
   var csvSegment = "<pre>" + message + "</pre>";
   
